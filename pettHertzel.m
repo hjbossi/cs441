@@ -55,7 +55,7 @@ f4 = ((((f_RevErb*t_Dbp(5))/fa2)+1)/((t_Dbp(5)/fa2)+1));
 f5 = (1/((t_Cry1(4)/gr2)+1))^3;
 dydt(2,1) = f2*f3*f4*f5 - d_RevErb*RevErb;
 
-f6 = ((((b_Per2*t_Bmal1(1))/ba3)+1)/((Bmal1(1)/ba3)+1))^2;
+f6 = ((((b_Per2*t_Bmal1(1))/ba3)+1)/((t_Bmal1(1)/ba3)+1))^2;
 f7 = (1/((t_Per2(3)/cr3)+1))^2;
 f8 = ((((f_Per2*t_Dbp(5))/fa3)+1)/((t_Dbp(5)/fa3)+1));
 f9 = (1/((t_Cry1(4)/gr3)+1))^2;

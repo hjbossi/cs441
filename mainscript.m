@@ -23,13 +23,17 @@ gr2 = 80.2;
 gr3 = 0.37;
 gr4 = 0.51;
 gr5 = 1.02;
-b_RevErb = 3.26;
+%b_RevErb = 3.26;
+b_RevErb = 2.6;
 ba2 = 0.51;
-b_Per2 = 3.69;
+%b_Per2 = 3.69;
+b_Per2 = 3.5;
 ba3 = 14.78;
-b_Cry1 = 1.35;
+%b_Cry1 = 1.35;
+b_Cry1 = 2;
 ba4 = 1.06;
-b_Dbp = 12.87;
+%b_Dbp = 12.87;
+b_Dbp = 4.5;
 ba5 = 0.01;
 fa2 = 0.19;
 f_RevErb = 1.23;
@@ -44,10 +48,10 @@ params = [d_Bmal1, d_RevErb, d_Per2, d_Cry1, d_Dbp, ar1, ar4,...
     ba3, b_Cry1, ba4, b_Dbp, ba5, fa2, f_RevErb, fa3, f_Per2, fa4, f_Cry1];
 
 %sol = dde23(ddefile,lags,history,tspan,options);
-sol = dde23('pettHertzel', lags, 'pettHertzelHistory',[0,100],[],params);
+sol = dde23('pettHertzel', lags, 'pettHertzelHistory',[0,300],[],params);
 
 %tint = linspace(0,20);
 %yint = deval(sol.y,tint);
 %plot(tint, yint)
-plot(sol.x,sol.y);
+plot(sol.x(:,380:end),sol.y(:,380:end));
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
