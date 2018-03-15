@@ -1,5 +1,8 @@
-%First draft of DDE solver
-% attempt to make the solve automated using a for loop
+% mainscript3.m
+% DDE Solver Using a For Loop
+% Chloe Boehm and Hannah Bossi 
+% CS441
+% 3/12/2018
 
 clear all;
 
@@ -45,22 +48,17 @@ D_0 = 0.15;
 
 numSteps = 100; 
 
-% bmal1Vals = zeros(18,1); 
-% reverbVals = zeros(18,1); 
-% Per2Vals = zeros(18,1); 
-% Cry1Vals = zeros(18,1); 
-% DbpVals = zeros(18,1); 
 for i = 1:numSteps
     tstart = (i-1)*1.79;
     tend = i*1.79;
     tspan = tstart:0.1:tend; 
+    % make the final result all in one array
     if i == 1
         total_t = tspan;
     else
         total_t = cat(2,total_t,tspan);
     end
 
-    %first interval from 0 to T2
     %Bmal1
     f1 = (1/((R_0/ar1)+1))^2;
     dBdt = @(t,Bmal1) f1 - d_Bmal1*Bmal1;
@@ -137,13 +135,16 @@ for i = 1:numSteps
     D_0 = Dbpval(end);
 end
 
-%total_t = 0:0.1:round(1.79*numSteps,1); 
 
-figure; 
-plot(total_t, bmal1Vals); 
+figure;
+p1 = plot(total_t, bmal1Vals);
 hold on; 
-plot(total_t, reverbVals); 
-plot(total_t, Per2Vals); 
-plot(total_t, Cry1Vals); 
-plot(total_t, DbpVals); 
+p2 = plot(total_t, reverbVals); 
+p3 = plot(total_t, Per2Vals); 
+p4 = plot(total_t, Cry1Vals); 
+p5 = plot(total_t, DbpVals); 
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
+set([p1,p2,p3,p4,p5],'LineWidth',2); 
+title('Simulation of gene expression of all 5 genes'); 
+xlabel('Circadian Time [h]'); 
+ylabel('Gene Expression [a.u.]'); 
