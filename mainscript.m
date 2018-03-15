@@ -55,3 +55,6 @@ sol = dde23('pettHertzel', lags, 'pettHertzelHistory',[0,300],[],params);
 %plot(tint, yint)
 plot(sol.x(:,380:end),sol.y(:,380:end));
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
+ylabel('Gene Expression [a.u.]')
+xlabel('Circadian Time [h]')
+title('Simulation of gene expression of all 5 genes')
