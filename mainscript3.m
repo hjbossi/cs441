@@ -46,7 +46,7 @@ P_0 = 0.5;
 C_0 = 1.5;
 D_0 = 0.15;
 
-numSteps = 100; 
+numSteps = 60; 
 
 for i = 1:numSteps
     tstart = (i-1)*1.79;
