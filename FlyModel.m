@@ -8,7 +8,7 @@ dClock = 0.25;
 numSteps = 10; 
 
 P_0 = 0.4;
-chunk = 10;
+chunk = 2;
 dClockfreevals = [];
 
 for i = 1:numSteps
@@ -42,20 +42,24 @@ for i = 1:numSteps
         perVals = cat(1, perVals,Perval);
         dCfreeVals = cat(1,dCfreeVals, dCfval);
     end
-      %update the initial conditions for the next time step
-    if length(perVals) <= 101
-        P_0 = perVals(end);
-    else    
-        P_0 = perVals(end-101);
-    end
+    %update the initial conditions for the next time step
+    %if length(perVals) <= 101
+    %    P_0 = perVals(end);
+    %else    
+    %    P_0 = perVals(end-101);
+    %end
     %P_0 = Perval(end);
     
 end
 
 figure;
-plot(total_t,perVals);
+p1 = plot(total_t,perVals);
 hold on;
-plot(total_t,dCfreeVals);
+p2 = plot(total_t,dCfreeVals);
 %plot(total_t,dClockfreevals);
-legend('[Per]','[dClockfree]')
+legend('Per','Free dClock')
+set([p1,p2],'LineWidth',2); 
+ylabel('Concentration [nM]');
+xlabel('Time [hr]');
 ylim([0 0.5])
+title('Simulation of circadian oscillations after positive feedback has been removed by fixing [dClock]');
