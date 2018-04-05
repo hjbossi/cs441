@@ -40,15 +40,15 @@ dClock = 0.25;
 k = 0.42; 
 d = 0.3; 
 
-yinit = [0 0 0 0.4]; 
+yinit = [0.4 0.0 0.0 0.0]; 
 params = [v_sp k_dp K_1 dClock k d]; 
 tspan = 0:1:40;
 
 [t,y] = ode15s(@flyModelEQ2,tspan,yinit, [],params); 
 
-
+figure;
 plot(t,y);
-legend('PER', 'PERA', 'PERB');
+legend('PER', 'PERA', 'PERB','PERC');
 %ylim([0 0.5]); 
 ylabel('Concentraion [nM]')
 xlabel('Circadian Time [h]')

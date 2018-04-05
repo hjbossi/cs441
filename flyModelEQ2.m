@@ -9,12 +9,13 @@ k_dp   = params(2);
 K_1    = params(3); 
 dClock = params(4); 
 k      = params(5); 
-d      = params(6); 
+d      = params(6);
 
 Per  = y(1);
 PerA = y(2); 
 PerB = y(3); 
 PerC = y(4); 
+
 
 % calc dClockFree
 temp1 = dClock - Per; 
@@ -30,11 +31,12 @@ end
 R_sp = (dClockFree/(K_1 + dClockFree));
 
 % original DDE
-dydt(1,1) = (v_sp * R_sp) - (k_dp* Per);
+dydt(1,1) = (v_sp * R_sp) - (k_dp* PerC);
 % first intermediate ODE 
-dydt(2,1) = k*Per - d*PerA; 
+dydt(2,1) = k*Per - d*0.8*PerA; 
 % second intermediate ODE
-dydt(3,1) = k*PerA - d*PerB; 
+dydt(3,1) = k*PerA - d*0.8*PerB; 
 % third intermediate ODE
-dydt(4,1) = k*PerB - d*PerC; 
+dydt(4,1) = k*PerB - d*0.8*PerC;
+
 end 
