@@ -48,7 +48,7 @@ tspan = 0:1:40;
 
 figure;
 plot(t,y);
-legend('PER', 'PERA', 'PERB','PERC');
+legend('PER', 'PERA', 'PERB', 'PERC');
 %ylim([0 0.5]); 
 ylabel('Concentraion [nM]')
 xlabel('Circadian Time [h]')

@@ -17,8 +17,9 @@ PerB = y(3);
 PerC = y(4); 
 
 
+
 % calc dClockFree
-temp1 = dClock - Per; 
+temp1 = dClock - PerC; 
 temp2 = 0; 
 
 if temp1>temp2
