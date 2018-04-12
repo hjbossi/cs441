@@ -37,11 +37,11 @@ fa4 = 1.61;
 f_Cry1 = 32.2;
 
 %k is 1.4*d
-k = 0.42; 
-d = 0.3;
+% k = 0.42; 
+% d = 0.3;
 
-%d = 0.2;
-%k = 0.28;
+d = 0.2;
+k = 0.28;
 
 
 params = [d_Bmal1, d_RevErb, d_Per2, d_Cry1, d_Dbp, ar1, ar4,...
