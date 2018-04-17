@@ -42,16 +42,25 @@ f_Per2 = 11.69;
 fa4 = 1.61;
 f_Cry1 = 32.2;
 
-d = 0.42;
-k = 0.3;
+scale = 12; 
+d_B = 1/scale;
+d_R = 0.002;
+k_B = 2/scale;
+k_R = 0.001;
+
+% list of meaningful attempts
+% written as a list with [d,k] format
+% [0.42,0.3](osicllations with damping)
+% [0.15 0.3] (oscillations with less damping but irregular pattern),
+% [0.1 0.3], [0.3,0.1] (integration error)
 
 lags = [t_Bmal1, t_RevErb, t_Per2, t_Cry1, t_Dbp];
 params = [d_Bmal1, d_RevErb, d_Per2, d_Cry1, d_Dbp, ar1, ar4,...
     cr2, cr3, cr4, cr5, gr2, gr3, gr4, gr5, b_RevErb, ba2, b_Per2,...
-    ba3, b_Cry1, ba4, b_Dbp, ba5, fa2, f_RevErb, fa3, f_Per2, fa4, f_Cry1 k d];
+    ba3, b_Cry1, ba4, b_Dbp, ba5, fa2, f_RevErb, fa3, f_Per2, fa4, f_Cry1 k_B d_B k_R d_R];
 
 %sol = dde23(ddefile,lags,history,tspan,options);
-sol = dde23('pettHertzel3', lags, 'pettHertzelHistory3',[0,60],[],params);
+sol = dde23('pettHertzel3', lags, 'pettHertzelHistory3',[0,200],[],params);
 
 %tint = linspace(0,20);
 %yint = deval(sol.y,tint);
@@ -63,6 +72,7 @@ plot(sol.x,sol.y(3,:));
 plot(sol.x,sol.y(4,:));
 plot(sol.x,sol.y(5,:));
 plot(sol.x,sol.y(6,:));
+xlim([100 160]); 
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
 ylabel('Gene Expression [a.u.]')
 xlabel('Circadian Time [h]')

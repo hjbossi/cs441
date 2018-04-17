@@ -1,5 +1,7 @@
 %% Cell 1
 %attempt at transitioning Bmal1 DDE into a series of ODEs
+% transition to all ODEs all at once, when ideally should be done one at a
+% time
 clear all;
 
 d_Bmal1 = 0.4;
