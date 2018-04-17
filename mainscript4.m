@@ -37,12 +37,23 @@ v_sp = 0.5;
 k_dp = 0.5; 
 K_1 = 0.3; 
 dClock = 0.25;
-k = 0.42; 
-d = 0.3; 
+
+k = 0.3; 
+d = k + 0.28; 
+
+%parameters tried
+% k = 0.42; d = 0.3 (small oscillations with blow up after 30h)
+% k = 0.4; d = 0.4 (less damping and slower blow up)
+% k = 0.3; d = 0.6 (not much damping but oscillations occur between 0.2 and
+% 1.4)
+% k = 0.32; d = 0.6 (fairly stable oscillations but amplitude is too high,
+% period is correct though)
+
+
 
 yinit = [0.4 0.0 0.0 0.0]; 
 params = [v_sp k_dp K_1 dClock k d]; 
-tspan = 0:1:40;
+tspan = 0:1:200;
 
 [t,y] = ode15s(@flyModelEQ2,tspan,yinit, [],params); 
 
