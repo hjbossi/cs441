@@ -42,17 +42,29 @@ f_Per2 = 11.69;
 fa4 = 1.61;
 f_Cry1 = 32.2;
 
+%Bmal1 Params
 scale = 12; 
-d_B = 1/scale;
-d_R = 0.002;
-k_B = 2/scale;
-k_R = 0.001;
+%d_B = 1/scale;
+%k_B = 2/scale;
+d_B = 0.03;
+k_B = 0.045;
 
 % list of meaningful attempts
 % written as a list with [d,k] format
 % [0.42,0.3](osicllations with damping)
 % [0.15 0.3] (oscillations with less damping but irregular pattern),
 % [0.1 0.3], [0.3,0.1] (integration error)
+% d = 0.045 k = 0.3 (small oscillations for Bmal1, large for Reverb)
+% d = 0.03, k_B = 0.045 (large oscialltions for Bmal1 (large period)
+
+%RevErb Params
+d_R = 0.002;
+k_R = 0.0015;
+
+%k = 0.002 d = 0.001 (oscillation after about 60hr but from about 2 to 4.5)
+% k = 0.001 d = 0.002 (oscillations almost identical to previous attempt)
+
+
 
 lags = [t_Bmal1, t_RevErb, t_Per2, t_Cry1, t_Dbp];
 params = [d_Bmal1, d_RevErb, d_Per2, d_Cry1, d_Dbp, ar1, ar4,...
