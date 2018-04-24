@@ -59,9 +59,13 @@ tspan = 0:1:200;
 [t,y] = ode15s(@flyModelEQ2,tspan,yinit, [],params); 
 
 figure;
-plot(t,y);
-legend('PER', 'PERA', 'PERB', 'PERC');
-%ylim([0 0.5]); 
-ylabel('Concentraion [nM]')
-xlabel('Circadian Time [h]')
-title('Simulation of Circadian Oscillations with Fixed dClock');
+p1 = plot(t,y(:,1));
+hold on;
+p2 = plot(t,dClock - y(:,1));
+%ylim([0 1.5])
+xlim([100 140]);
+legend('PER', 'dClock Free');
+set([p1,p2],'LineWidth',2); 
+ylabel('Concentraion [nM]','FontSize',16)
+xlabel('Circadian Time [h]','FontSize',16)
+title('Simulation of Circadian Oscillations with Fixed dClock','FontSize',16);

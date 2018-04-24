@@ -87,6 +87,6 @@ p5 = plot(sol.x,sol.y(6,:));
 xlim([100 160]); 
 set([p1,p2,p3,p4,p5],'LineWidth',2);
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
-ylabel('Gene Expression [a.u.]')
-xlabel('Circadian Time [h]')
-title('Simulation of gene expression of all 5 genes')
+ylabel('Gene Expression [a.u.]','FontSize',16)
+xlabel('Circadian Time [h]','FontSize',16)
+title('Simulation of gene expression of all 5 genes','FontSize',16)
