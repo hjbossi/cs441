@@ -44,10 +44,10 @@ f_Cry1 = 32.2;
 
 %Bmal1 Params
 scale = 12; 
-%d_B = 1/scale;
-%k_B = 2/scale;
-d_B = 0.03;
-k_B = 0.045;
+d_B = 1/scale;
+k_B = 2/scale;
+%d_B = 0.03;
+%k_B = 0.045;
 
 % list of meaningful attempts
 % written as a list with [d,k] format
@@ -78,13 +78,14 @@ sol = dde23('pettHertzel3', lags, 'pettHertzelHistory3',[0,200],[],params);
 %yint = deval(sol.y,tint);
 %plot(tint, yint)
 figure;
-plot(sol.x,sol.y(1,:));
+p1 = plot(sol.x,sol.y(1,:));
 hold on; 
-plot(sol.x,sol.y(3,:));
-plot(sol.x,sol.y(4,:));
-plot(sol.x,sol.y(5,:));
-plot(sol.x,sol.y(6,:));
+p2 = plot(sol.x,sol.y(3,:));
+p3 = plot(sol.x,sol.y(4,:));
+p4 = plot(sol.x,sol.y(5,:));
+p5 = plot(sol.x,sol.y(6,:));
 xlim([100 160]); 
+set([p1,p2,p3,p4,p5],'LineWidth',2);
 legend('Bmal1','RevErb','Per2','Cry1','Dbp');
 ylabel('Gene Expression [a.u.]')
 xlabel('Circadian Time [h]')

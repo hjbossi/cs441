@@ -50,10 +50,10 @@ RevErb = y(3);
 Per2 = y(4);
 Cry1 = y(5);
 Dbp = y(6);
-RevErbA = y(7); 
+%RevErbA = y(7); 
 
 
-f1 = (1/((RevErbA/ar1)+1))^2;
+f1 = (1/((t_RevErb(2)/ar1)+1))^2;
 dydt(1,1) = f1 - d_Bmal1*Bmal1A;
 dydt(2,1) = k_B*Bmal1 - d_B*Bmal1A;
 
@@ -62,8 +62,8 @@ f2 = ((((b_RevErb*Bmal1A)/ba2)+1)/((Bmal1A/ba2)+1))^3;
 f3 = (1/((t_Per2(3)/cr2)+1))^3;
 f4 = ((((f_RevErb*t_Dbp(5))/fa2)+1)/((t_Dbp(5)/fa2)+1));
 f5 = (1/((t_Cry1(4)/gr2)+1))^3;
-dydt(3,1) = f2*f3*f4*f5 - d_RevErb*RevErbA;
-dydt(7,1) = k_R*RevErb - d_R*RevErbA;
+dydt(3,1) = f2*f3*f4*f5 - d_RevErb*RevErb;
+%dydt(7,1) = k_R*RevErb - d_R*RevErbA;
 
 f6 = ((((b_Per2*Bmal1A)/ba3)+1)/((Bmal1A/ba3)+1))^2;
 f7 = (1/((t_Per2(3)/cr3)+1))^2;
@@ -71,7 +71,7 @@ f8 = ((((f_Per2*t_Dbp(5))/fa3)+1)/((t_Dbp(5)/fa3)+1));
 f9 = (1/((t_Cry1(4)/gr3)+1))^2;
 dydt(4,1) = f6*f7*f8*f9 - d_Per2*Per2;
 
-f10 = (1/((RevErbA/ar4)+1))^2;
+f10 = (1/((t_RevErb(2)/ar4)+1))^2;
 f11 = ((((b_Cry1*Bmal1A)/ba4)+1)/((Bmal1A/ba4)+1))^2;
 f12 = (1/((t_Per2(3)/cr4)+1))^2;
 f13 = ((((f_Cry1*t_Dbp(5))/fa4)+1)/((t_Dbp(5)/fa4)+1));

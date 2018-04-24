@@ -15,15 +15,16 @@ params = [v_sp k_dp K_1 dClock];
 
 sol = dde23('flyModelEQ',t_1, 'flyModelHistory', [0,40], [],params); 
 
-
-plot(sol.x,sol.y);
+figure;
+p1 = plot(sol.x,sol.y);
 hold on; 
-plot(sol.x, dClock - sol.y);
+p2 = plot(sol.x, dClock - sol.y);
 legend('PER', 'dClockFree');
 ylim([0 0.5]); 
-ylabel('Concentraion [nM]')
-xlabel('Circadian Time [h]')
-title('Simulation of Circadian Oscillations with Fixed dClock');
+ylabel('Concentraion [nM]','FontSize',16)
+xlabel('Circadian Time [h]','FontSize',16)
+set([p1,p2],'LineWidth',2);
+title('Simulation of Circadian Oscillations with Fixed dClock','FontSize',16);
 
 %% Cell 2
 % ode attempt #1
